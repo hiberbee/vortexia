@@ -3,3 +3,5 @@ provider "google" {
   project     = "vortexia"
   region      = "us-east1"
 }
+provider "local" {
+}
