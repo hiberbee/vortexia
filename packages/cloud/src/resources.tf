@@ -27,7 +27,7 @@ resource "local_file" "kubeconfig_file" {
 apiVersion: v1
 clusters:
 - cluster:
-      certificate-authority-data: ${data.google_container_cluster.production.master_auth.0.cluster_ca_certificate}
+    certificate-authority-data: ${data.google_container_cluster.production.master_auth.0.cluster_ca_certificate}
     server: https://${data.google_container_cluster.production.endpoint}
   name: gke_${data.google_container_cluster.production.name}
 contexts:
