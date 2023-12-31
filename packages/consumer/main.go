@@ -3,10 +3,11 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/segmentio/kafka-go/sasl/plain"
 	"log"
 	"os"
 	"strings"
+
+	"github.com/segmentio/kafka-go/sasl/plain"
 
 	godotenv "github.com/joho/godotenv"
 	kafka "github.com/segmentio/kafka-go"
