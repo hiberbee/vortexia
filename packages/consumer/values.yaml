@@ -1,0 +1,14 @@
+image:
+  registry:
+    url: ghcr.io/hiberbee
+    username: "fromEnv"
+    password: "fromEnv"
+  repository: vortexia/consumer
+  tag: commit9d918aef
+
+  pullSecrets: []
+
+replicaCount: 1
+
+nameOverride: ""
+fullnameOverride: ""

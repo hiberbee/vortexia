@@ -47,4 +47,6 @@ releases:
           service:
             omitClusterIP: true
         tcp:
-          '9092': "default/kafka:9092"
+          "9092": "default/kafka:9092"
+  - name: consumer
+    chart: ../consumer
