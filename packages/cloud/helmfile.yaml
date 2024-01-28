@@ -50,3 +50,9 @@ releases:
           "9092": "default/kafka:9092"
   - name: consumer
     chart: ../consumer
+    values:
+      - image:
+          tag: '{{ requiredEnv "IMAGE_TAG" }}'
+          registry:
+            username: '{{ requiredEnv "DOCKER_USERNAME" }}'
+            password: '{{ requiredEnv "DOCKER_PASSWORD" }}'

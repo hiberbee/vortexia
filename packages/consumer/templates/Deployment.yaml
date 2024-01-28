@@ -6,13 +6,16 @@ metadata:
   name: {{ $fullname }}
 spec:
   replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ $fullname }}
   template:
+    metadata:
+      labels:
+        app: {{ $fullname }}
     spec: {{ if and $registry.url $registry.username $registry.password }}
       imagePullSecrets:
-        - name: {{ include "app.registry" . }} {{ else }} {{ with $imagePullSecrets := .Values.image.pullSecrets }}
-      imagePullSecrets: {{ range $imagePullSecrets }}
-        - name: {{ tpl . $ }} {{ end }} {{ end }}  {{ end }}
-
+        - name: {{ include "app.registry" . }} {{ end }}
       containers:
         - name: go-app
           image: {{ printf "%s/%s:%s" .Values.image.registry.url .Values.image.repository .Values.image.tag | quote }}

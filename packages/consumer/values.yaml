@@ -4,9 +4,12 @@ image:
     username: "fromEnv"
     password: "fromEnv"
   repository: vortexia/consumer
-  tag: commit9d918aef
+  tag: latest
 
   pullSecrets: []
+
+app:
+  name: vortexia
 
 replicaCount: 1
 
