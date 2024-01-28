@@ -69,16 +69,12 @@ jobs:
           gcloud components install gke-gcloud-auth-plugin
           gcloud container clusters get-credentials ${{ secrets.GCP_CLUSTER_NAME }} --zone=${{ secrets.GCP_ZONE }}
 
-      - name: Verify kubernetes config
-        run: |
-          kubectl cluster-info dump
-
       - name: Get tag name
         id: tag
         run: echo "::set-output name=sha::${GITHUB_SHA::7}"
 
       - name: Apply Helmfile
-        uses: hiberbee/github-action-helm@1.3.0
+        uses: hiberbee/github-action-helm@latest
         env:
           IMAGE_TAG: '${{ steps.tag.outputs.name }}'
           DOCKER_USERNAME: '${{ github.repository_owner }}'
