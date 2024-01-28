@@ -1,0 +1,24 @@
+{{ $fullname := include "app.fullname" . }}
+{{ $registry := .Values.image.registry }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $fullname }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ $fullname }}
+  template:
+    metadata:
+      labels:
+        app: {{ $fullname }}
+    spec: {{ if and $registry.url $registry.username $registry.password }}
+      imagePullSecrets:
+        - name: {{ include "app.registry" . }} {{ end }}
+      containers:
+        - name: go-app
+          image: {{ printf "%s/%s:%s" .Values.image.registry.url .Values.image.repository .Values.image.tag | quote }}
+          env:
+            - name: XPERM
+              value: "1.2.3"

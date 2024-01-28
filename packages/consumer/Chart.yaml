@@ -1,0 +1,5 @@
+apiVersion: v2
+name: go
+description: Go Web Application
+version: 1.0.0
+type: application
