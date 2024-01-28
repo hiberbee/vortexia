@@ -85,4 +85,3 @@ jobs:
         with:
           helmfile: diff
           helmfile-config: packages/cloud/helmfile.yaml
-          helmfile-version: 0.160.0
