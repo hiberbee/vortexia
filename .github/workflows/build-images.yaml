@@ -63,10 +63,11 @@ jobs:
       - name: Get kubernetes config
         env:
           USE_GKE_GCLOUD_AUTH_PLUGIN: "true"
+          GCP_CLUSTER_NAME: ${{ secrets.GCP_CLUSTER_NAME }}
+          GCP_ZONE: ${{ secrets.GCP_ZONE }}
         run: |
-          gcloud components install kubectl
           gcloud components install gke-gcloud-auth-plugin
-          gcloud container clusters get-credentials ${{ secrets.GCP_CLUSTER_NAME }} --zone=${{ secrets.GCP_ZONE }} --project=${{ secrets.GCP_PROJECT_ID }}
+          gcloud container clusters get-credentials $GCP_CLUSTER_NAME --zone=$GCP_ZONE
 
       - name: Verify kubernetes config
         run: |
