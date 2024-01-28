@@ -76,7 +76,7 @@ jobs:
       - name: Apply Helmfile
         uses: hiberbee/github-action-helm@latest
         env:
-          IMAGE_TAG: '${{ steps.tag.outputs.name }}'
+          IMAGE_TAG: '${{ steps.tag.outputs.sha }}'
           DOCKER_USERNAME: '${{ github.repository_owner }}'
           DOCKER_PASSWORD: '${{ secrets.GITHUB_TOKEN }}'
           INTERBROKER_PASSWORD: '{{ secrets.INTERBROKER_PASSWORD }}'
